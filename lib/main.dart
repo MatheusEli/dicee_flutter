@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -36,10 +35,7 @@ class _DicePageState extends State<DicePage> {
               child: TextButton(
                   style: TextButton.styleFrom(padding: EdgeInsets.zero),
                   onPressed: () {
-                    setState(() {
-                      leftDiceNumber = Random().nextInt(6) + 1;
-                      print(leftDiceNumber);
-                    });
+                    switchValues();
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -50,9 +46,7 @@ class _DicePageState extends State<DicePage> {
               child: TextButton(
                 style: TextButton.styleFrom(padding: EdgeInsets.zero),
                 onPressed: () {
-                  setState(() {
-                    rightDiceNumber = Random().nextInt(6) + 1;
-                  });
+                  switchValues();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -64,5 +58,12 @@ class _DicePageState extends State<DicePage> {
         ),
       ),
     );
+  }
+
+  void switchValues() {
+    setState(() {
+      rightDiceNumber = Random().nextInt(6) + 1;
+      leftDiceNumber = Random().nextInt(6) + 1;
+    });
   }
 }
